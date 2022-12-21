@@ -1,0 +1,7 @@
+#bigimg{
+  width: 350px;
+}
+
+#bigimg:hover{
+  width: 500px;
+}

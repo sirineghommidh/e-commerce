@@ -1,0 +1,124 @@
+
+
+
+
+
+<div class="container" style="margin-left: 400px">
+  <div class="row">
+    <div></div>
+
+    <div id="content" >
+      <h1>  Add Product </h1>
+
+      <form role="form" [formGroup]="addprod">
+
+        <div class="form-group">
+          <label for="username" class="iconic user" > Product Name <span class="required">*</span></label>
+          <input type="text" class="form-control" name="username" id="username"  required="required" placeholder="Name" formControlName='libelleProduit'>
+
+
+
+          <div *ngIf="libelleProduit?.invalid && (libelleProduit?.dirty || libelleProduit?.touched)">
+
+            <div *ngIf="libelleProduit?.errors?.['required']">
+              Product Name is required.
+            </div>
+            <div *ngIf="libelleProduit?.errors?.['minlength']">
+              Product Name must be at least 2 characters long.
+            </div>
+            <div *ngIf="libelleProduit?.errors?.['maxlength']">
+              Product Name must be at least 1000 characters long.
+            </div>
+
+
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="usermail" class="iconic mail-alt"> Code <span class="required">*</span></label>
+          <input type="email" class="form-control" name="usermail" id="usermail" placeholder="" required="required" formControlName='codeProduit'>
+
+          <div *ngIf="codeProduit?.invalid && (codeProduit?.dirty || codeProduit?.touched)">
+          <div *ngIf="codeProduit?.errors?.['required']">
+            Product Code is required.
+          </div>
+          <div *ngIf="codeProduit?.errors?.['minlength']">
+            Product Name must be at least 4 characters long.
+          </div>
+
+          </div>
+
+
+        </div>
+
+        <div class="form-group">
+          <label for="subject" class="iconic quote-alt"> Price <span class="required">*</span></label>
+          <input type="text" class="form-control" name="subject" id="subject"  required="required" placeholder="Dt" formControlName='prixUnitaire'>
+
+          <div *ngIf="prixUnitaire?.invalid && (prixUnitaire?.dirty || prixUnitaire?.touched)">
+            <div *ngIf="prixUnitaire?.errors?.['required']">
+              Price is required.
+            </div>
+            <div *ngIf="prixUnitaire?.errors?.['pattern']">
+              Only numbers
+            </div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subject" class="iconic quote-alt"> Image Link <span class="required">*</span></label>
+          <input type="text" class="form-control" name="subject" id="subject"  required="required" placeholder="http" formControlName='imageUrl'>
+
+          <div *ngIf="imageUrl?.invalid && (imageUrl?.dirty || imageUrl?.touched)">
+            <div *ngIf="imageUrl?.errors?.['required']">
+              Url is required.
+            </div>
+            <div *ngIf="imageUrl?.errors?.['pattern']">
+              Enter a Valid Link
+            </div>
+
+          </div>
+
+        </div>
+      </form>
+      <form role="form" [formGroup]="addDetail">
+        <div class="form-group">
+          <label for="message" class="iconic comment"> Categorie <span class="required">*</span></label>
+          <select formControlName='cate'>
+            <option *ngFor="let cat of categories" >{{cat.categorie}}</option>
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="iconic comment"> Description <span class="required">*</span></label>
+          <textarea name="message" id="message"  class="form-control" rows="3" placeholder="desc"  required="required" formControlName='descrip'></textarea>
+
+
+          <div *ngIf="descrip?.invalid && (descrip?.dirty || descrip?.touched)">
+            <div *ngIf="descrip?.errors?.['required']">
+              Description is required.
+            </div>
+            <div *ngIf="descrip?.errors?.['minlength']">
+              Description must be at least 15 characters long.
+            </div>
+            <div *ngIf="descrip?.errors?.['maxlength']">
+              Description must be a maximum of 15 characters long.
+            </div>
+
+          </div>
+
+
+
+        </div>
+      </form>
+        <input type="submit" value=" Add " style="margin-left: 100px" [disabled]='this.addprod.invalid || this.addDetail.invalid' (click)="addPro()"/>
+
+    </div>
+  </div>
+
+</div>
+
+

@@ -1,0 +1,29 @@
+<nav id="menu" class="navbar">
+  <div class="nav-inner container">
+    <div class="navbar-header"><span id="category" class="visible-xs">Categories</span>
+      <button type="button" class="btn btn-navbar navbar-toggle" ><i class="fa fa-bars"></i></button>
+    </div>
+    <div class="navbar-collapse">
+      <ul class="main-navigation">
+        <li><a [routerLink]="['home','produits']"   class="parent"  >Home</a> </li>
+        <li *ngFor="let cat of categories"><a    class="parent" [routerLink]="[cat.categorie,'produits']" >{{cat.categorie}}</a> </li>
+
+        <li><a href="#" class="active parent">Page</a>
+          <ul>
+            <li><a href="category.html">Category Page</a></li>
+            <li><a href="cart.html">Cart Page</a></li>
+            <li><a href="checkout.html">Checkout Page</a></li>
+            <li><a href="blog.html" >Blog Page</a></li>
+            <li><a href="singale-blog.html" >Singale Blog Page</a></li>
+            <li><a href="register.html">Register Page</a></li>
+            <li><a href="contact.html">Contact Page</a></li>
+          </ul>
+        </li>
+        
+
+        <li><a [routerLink]="['ReclamationForm']"  >Réclamations</a> </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

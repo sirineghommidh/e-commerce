@@ -1,0 +1,78 @@
+<div class="column-block">
+  <div class="columnblock-title">Advanced search</div>
+  <div class="category_block">
+    <form [formGroup]="rechav">
+    <ul class="box-category treeview-list treeview collapsable">
+      <li class="expandable"><div class="hitarea "></div><a  class="activSub">Categorie : </a>
+      <div >
+        <select id="pet-select" formControlName='cat' >
+          <option value="-1">--Aucune--</option>
+
+          <option *ngFor="let categ of categories " value="{{categ.categorie}}">{{categ.categorie}}</option>
+
+
+        </select>
+
+      </div>
+      </li>
+      <li class="expandable"><div class="hitarea "></div><a  class="activSub">Product Name : </a>
+       <div>
+         <input type="text" formControlName='productName'>
+         <div *ngIf="productName?.invalid && (productName?.dirty || productName?.touched)">
+
+           <div *ngIf="productName?.errors?.['pattern']">
+             Only characters
+           </div>
+
+
+         </div>
+       </div>
+      </li>
+
+      <li class="expandable"><div class="hitarea "></div><a  class="activSub">Minimum Price : </a>
+        <input type="text" formControlName='prixmin'>
+        <div *ngIf="prixmin?.invalid && (prixmin?.dirty || prixmin?.touched)">
+
+          <div *ngIf="prixmin?.errors?.['pattern']">
+            Only numbers
+          </div>
+
+
+        </div>
+      </li>
+
+      <li class="expandable"><div class="hitarea "></div><a  class="activSub">Maximum Price  : </a>
+        <input type="text" formControlName='prixmax'>
+        <div *ngIf="prixmax?.invalid && (prixmax?.dirty || prixmax?.touched)">
+
+          <div *ngIf="prixmax?.errors?.['pattern']">
+            Only numbers
+          </div>
+
+
+        </div>
+      </li>
+
+      <li class="expandable"><div class="hitarea "></div><a  class="activSub">Stars Number : </a>
+        <div>
+          <select  name="blaa" id="blaa" formControlName='staar' >
+            <option [ngValue]="">--Aucune--</option>
+
+            <option  [ngValue]="0">0</option>
+            <option  [ngValue]="1">1</option>
+            <option  [ngValue]="2">2</option>
+            <option  [ngValue]="3">3</option>
+            <option  [ngValue]="4">4</option>
+            <option  [ngValue]="5">5</option>
+
+          </select>
+          
+        </div>
+      </li>
+      <input type="submit" value="Search" style="margin-left: 100px" [disabled]='!this.rechav.valid' (click)="$endNotif()">
+    </ul>
+    </form>
+
+  </div>
+
+</div>

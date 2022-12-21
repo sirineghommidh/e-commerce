@@ -1,0 +1,87 @@
+
+<div class="container">
+
+  <div class="row">
+    <div></div>
+
+
+    <div class="content">
+          <!-- titre-->
+      <h1>Vous avez des troubles? Vous pouvez faire une réclamation ici !</h1>
+        <div *ngFor="let categ of categories">
+          <div *ngIf="categ.status==1">
+            <button (click)="GetobjAndShow(categ)">{{categ.categoryName}}</button>
+          </div>
+
+        </div>
+            <button (click)="showAndSend()">Autre</button>
+
+
+          <!--formulaire-->
+      <form role="form" [formGroup]="addReclamation" *ngIf="display">
+
+        <div class="form-group">
+          <label for="sujet">Sujet de la réclamation : </label>
+          <input type="text" id="sujet" name="sujet" class="form-control" required="required" placeholder="exp:produit non livré" formControlName="sujetField">
+        </div>
+
+        <div *ngIf="sujetField?.invalid && sujetField?.touched" class="alert alert-danger" role="alert">
+          <div *ngIf="sujetField?.errors?.['required']">
+            <p>Champ obligatoire!</p>
+          </div>
+          <div *ngIf="sujetField?.errors?.['minlength']">
+            <p>Le sujet doit contenir plus de 5 caractères !</p>
+          </div>
+          <div *ngIf="sujetField?.errors?.['pattern']">
+            <p>Le sujet doint etre composé uniquement de lettres !</p>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="contenu">Description de la réclamation : </label>
+          <input type="textarea" id="contenu" name="contenu" class="form-control" required="required" placeholder="détails de la réclamation" formControlName="contenuField">
+        </div>
+
+        <div *ngIf="contenuField?.invalid && contenuField?.touched" class="alert alert-danger" role="alert">
+          <div *ngIf="contenuField?.errors?.['required']">
+            <p>Champ obligatoire!</p>
+          </div>
+          <div *ngIf="contenuField?.errors?.['minlength']">
+            <p>Le sujet doit contenir plus de 5 caractères !</p>
+          </div>
+          <div *ngIf="contenuField?.errors?.['pattern']">
+            <p>Le sujet doint etre composé uniquement de lettres !</p>
+          </div>
+        </div>
+
+        <div *ngIf="displayAutre">
+          <div class="form-group">
+            <label for="catNom">catégorie de la réclamation : </label>
+            <input type="text" id="catNom" name="catNom" class="form-control" required="required" placeholder="exp:produit non livré" formControlName="catNomField">
+          </div>
+
+<!--          <div *ngIf="catNomField?.invalid && catNomField?.touched" class="alert alert-danger" role="alert">-->
+<!--            <div *ngIf="catNomField?.errors?.['required']">-->
+<!--              <p>Champ obligatoire!</p>-->
+<!--            </div>-->
+<!--            <div *ngIf="catNomField?.errors?.['minlength']">-->
+<!--              <p>Le sujet doit contenir plus de 5 caractères !</p>-->
+<!--            </div>-->
+<!--            <div *ngIf="catNomField?.errors?.['pattern']">-->
+<!--              <p>Le sujet doint etre composé uniquement de lettres !</p>-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+
+        <input type="submit" value=" Add " style="margin-left: 100px"class="btn btn-primary btn-sm shadow-none" type="button" (click)="getFormData()" [disabled]='this.addReclamation.invalid'/>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+</div>
